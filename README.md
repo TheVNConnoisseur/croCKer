@@ -2,7 +2,7 @@
 Program that lets the user read and write .SRP and .VAR files used in games for the Tmr-Hiro ADV System (mostly Marigold produced games).
 
 ### Notes on its usage
-1. For now, the files will be exported soly as text files. But if there's enough demand, exporting as JSON files can be done.
+1. For now, the files will be exported solely as text files. But if there's enough demand, exporting as JSON files can be done.
 
 ### How are SRP and VAR files structured?
 While the code also documents how both formats are structured, here it is also the same information on a more accessible manner:
