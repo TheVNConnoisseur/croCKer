@@ -126,6 +126,19 @@ namespace croCKer
 
                 //Put an empty line for having a more readable output file
                 stringbuilder.Append(Environment.NewLine);
+
+                //Apparently the header, even though it indicates the number of instructions,
+                //the game engine does not even follow said value, it just checks for when the footer
+                //instruction comes up.
+                //In some edge cases, this value is set wrong by the developers,
+                //causing an EndofStreamException. Instead of detecting said exception, to avoid issues
+                //with incorrectly formatted files modified by any user previously, it will be checked
+                //if the current offset coincides with the length of the file, because it should mean
+                //that the file has been read correctly and that there are no more instructions to read.
+                if (CurrentOffset == OriginalBytes.Length)
+                {
+                    break;
+                }
             }
 
             //Remove the last /r/n characters from the string in order to take out the last empty line
