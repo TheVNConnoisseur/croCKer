@@ -8,7 +8,7 @@ Program that lets the user read and write .SRP and .VAR files used in games for 
 While the code also documents how both formats are structured, here it is also the same information on a more accessible manner:
 SRP files are divided into 2 parts:
   * **Header**: Number of instructions (4 bytes)
-    * Number of files: each instruction is an entry, so we calculate how many of them the SRP file contains
+    * Number of files: each instruction is an entry, so we calculate how many of them the SRP file contains. The game engine does NOT follow this value, it can be completely wrong since it only checks for a specific end of script instruction (more on that later).
   * **Instructions**: The following structure gets repeated with the value obtained before: Instruction length (2 bytes) + Instruction type (2 bytes) + Instruction flags (2 bytes) + Instruction data (`Instruction length` - 2 - 2 bytes)
     * Instruction length: the length of a the instruction in bytes (the result only tells the amount of bytes the type, flags and data fields have).
     * Instruction type: the type of the command. While we can't be 100% sure for all the games, these are the most important ones that we can know based on their context: 0 is for text inside in-game, 1 is for when the player has to choose an option in-game, 2 is for loading images (character sprites of backgrounds) and 3 is for sounds (BGM or SE).
